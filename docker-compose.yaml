@@ -24,8 +24,8 @@ services:
       context: ./project/server
     image: jamesemwallis/docker-vc-project-server:latest
     container_name: docker-vc-project-server
-    volumes: 
-      - ./project/server:/json
+    # volumes: 
+    #   - ./project/server:/json
     ports:
       - 3002:3000
     networks:

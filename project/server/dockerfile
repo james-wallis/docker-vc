@@ -8,5 +8,7 @@ RUN mkdir /app
 COPY /app /app
 EXPOSE 3000
 WORKDIR /
-RUN mkdir /json && touch /json/wikiPages.json
+RUN mkdir /json 
+# RUN touch /json/wikiPages.json
+ADD wikiPages.json /json
 CMD ["npm", "start"]

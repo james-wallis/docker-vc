@@ -5,7 +5,8 @@ const port = 3000
 let webpagesScanned = 0;
 let englandMentioned = 0;
 let beginTIme = null;
-var socket = require('socket.io-client')('http://docker-vc-project-server:3000');
+// var socket = require('socket.io-client')('http://docker-vc-project-server:3000');
+var socket = require('socket.io-client')('https://admin.james-wallis.com');
 socket.on('connect', function () {
   console.log('connection');
 });
