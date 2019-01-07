@@ -1,0 +1,44 @@
+version: '3.5'
+
+services:
+  # docker-vc-server:
+  #   build:
+  #     context: ./platform/server
+  #   image: jamesemwallis/docker-vc-server:latest
+  #   container_name: docker-vc-server
+  #   ports:
+  #     - 3001:3000
+
+  docker-vc-client:
+    build:
+      context: ./platform/client
+    image: jamesemwallis/docker-vc-client:latest
+    container_name: docker-vc-client
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - vc-project
+
+  docker-vc-project-server:
+    build:
+      context: ./project/server
+    image: jamesemwallis/docker-vc-project-server:latest
+    container_name: docker-vc-project-server
+    volumes: 
+      - ./project/server:/json
+    ports:
+      - 3002:3000
+    networks:
+      - vc-project
+
+  docker-vc-project-client:
+    build:
+      context: ./project/client
+    image: jamesemwallis/docker-vc-project-client:latest
+    container_name: docker-vc-project-client
+    networks:
+      - vc-project
+
+networks:
+  vc-project:
+    name: vc-project

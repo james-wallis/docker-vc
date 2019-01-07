@@ -1,0 +1,11 @@
+FROM node:8
+ENV NODE_ENV production
+RUN apt-get update
+WORKDIR /
+ADD package.json /
+RUN npm install
+RUN mkdir /app
+COPY /app /app
+EXPOSE 3000
+WORKDIR /
+CMD ["npm", "start"]
